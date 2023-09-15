@@ -8,10 +8,10 @@
 
     <!-- Body Properties -->
     <xacro:property name="rotor_velocity_slowdown_sim" value="10" />
-    <xacro:property name="mesh_file" value="haubentaucher_description/meshes/platforms.STL" /> <!-- changed (change name someday) -->
+    <xacro:property name="mesh_file" value="haubentaucher_description/meshes/Haubentaucher.STL" /> <!-- changed (change name someday) -->
     <xacro:property name="rotor_1_mesh_file" value="haubentaucher_description/meshes/aerial_propeller_1.dae" />
     <xacro:property name="rotor_2_mesh_file" value="haubentaucher_description/meshes/aerial_propeller_2.dae" />
-    <xacro:property name="mesh_scale" value="0.1" />
+    <xacro:property name="mesh_scale" value="0.001" />
     <xacro:property name="prop_scale" value="0.0015" />
     <xacro:property name="mass" value="6.737"/>  <!-- [kg] --> <!-- changed values -->
     <xacro:property name="body_width" value="0.47" /> <!-- [m] --> <!-- changed values -->
@@ -61,7 +61,7 @@
     <xacro:property name="mesh_aerprop_ori_z" value="1.5707" /> <!-- [m] -->
     
     <!-- Included URDF Files -->
-    <xacro:include filename="$(find haubentaucher_description)/urdf/multirotor_base.xacro" />
+    <xacro:include filename="$(find haubentaucher_description)/urdf/multirotor_base.urdf.xacro" />
 
     <!-- Instantiate multirotor_base_macro once -->
     <xacro:multirotor_base_macro
@@ -69,7 +69,8 @@
          mass="${mass}"
          body_width="${body_width}"
          body_height="${body_height}"
-         mesh_file="${mesh_file}">
+         mesh_file="${mesh_file}"
+         mesh_scale="${mesh_scale}">
          <origin xyz="${mesh_pos_x} ${mesh_pos_y} ${mesh_pos_z}" rpy="${mesh_ori_x} ${mesh_ori_y} ${mesh_ori_z}"/>
          <xacro:insert_block name="body_inertia" />
     </xacro:multirotor_base_macro>
@@ -93,7 +94,7 @@
         rolling_moment_coefficient="${rolling_moment_coefficient}"
         color="Blue"
         prop_scale="${prop_scale}">
-        <origin xyz="${arm_length_front_x} -${arm_length_front_y} ${rotor_offset_top}" rpy="0 0 0" />
+        <origin xyz="${arm_length} -${arm_length} ${rotor_offset_top}" rpy="0 0 0" />
         <xacro:insert_block name="rotor_inertia" />
     </xacro:vertical_rotor>
 
@@ -114,7 +115,7 @@
         rolling_moment_coefficient="${rolling_moment_coefficient}"
         color="Blue"
         prop_scale="${prop_scale}">
-        <origin xyz="-${arm_length_back_x} ${arm_length_back_y} ${rotor_offset_top}" rpy="0 0 0" />
+        <origin xyz="-${arm_length} ${arm_length} ${rotor_offset_top}" rpy="0 0 0" />
         <xacro:insert_block name="rotor_inertia" />
     </xacro:vertical_rotor>
 
@@ -135,7 +136,7 @@
         rolling_moment_coefficient="${rolling_moment_coefficient}"
         color="Blue"
         prop_scale="${prop_scale}">
-        <origin xyz="${arm_length_front_x} ${arm_length_front_y} ${rotor_offset_top}" rpy="0 0 0" />
+        <origin xyz="${arm_length} ${arm_length} ${rotor_offset_top}" rpy="0 0 0" />
         <xacro:insert_block name="rotor_inertia" />
     </xacro:vertical_rotor>
 
@@ -156,7 +157,7 @@
         rolling_moment_coefficient="${rolling_moment_coefficient}"
         color="Blue"
         prop_scale="${prop_scale}">
-        <origin xyz="-${arm_length_back_x} -${arm_length_back_y} ${rotor_offset_top}" rpy="0 0 0" />
+        <origin xyz="-${arm_length} -${arm_length} ${rotor_offset_top}" rpy="0 0 0" />
         <xacro:insert_block name="rotor_inertia" />
     </xacro:vertical_rotor>
     

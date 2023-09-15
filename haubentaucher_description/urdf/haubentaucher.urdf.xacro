@@ -20,96 +20,17 @@
         </plugin>
     </gazebo>
   
-    <joint name="scan_joint" type="fixed">
-        <parent link="${namespace}/base_link"/>
-        <child link="base_scan"/>
-        <origin xyz="0.0 0 0.05" rpy="0 0 0"/>
-    </joint>
-
-    <link name="base_scan">
-        <visual>
-            <origin xyz="0 0 0.0" rpy="0 0 0"/>
-            <geometry>
-                <mesh filename="$(find haubentaucher_description)/meshes/lds.stl" scale="0.001 0.001 0.001"/>
-            </geometry>
-            <material name="dark"/>
-        </visual>
-
-        <collision>
-            <origin xyz="0.015 0 -0.0065" rpy="0 0 0"/>
-            <geometry>
-                <cylinder length="0.0315" radius="0.055"/>
-            </geometry>
-        </collision>
-
-        <inertial>
-            <mass value="0.114" />
-            <origin xyz="0 0 0" />
-            <inertia ixx="0.001" ixy="0.0" ixz="0.0"
-                  iyy="0.001" iyz="0.0"
-                  izz="0.001" />
-        </inertial>
-    </link>
   
-    <!-- Parameters -->
-    <xacro:property name="visual_mesh_file" value="$(find haubentaucher_description)/meshes/platforms.STL"/>
+     <!--Parameters-->
+    <xacro:property name="visual_mesh_file" value="$(find haubentaucher_description)/meshes/Haubentaucher.STL"/>
 
-  
-    <link name="laser1D_link">
-        <inertial>
-            <mass value="1e-5" />
-            <origin xyz="0 0 0" rpy="0 0 0"/>
-            <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
-        </inertial>
-    </link>
-    <joint name="laser1D_joint" type="fixed">
-        <axis xyz="0 0 1" />
-        <origin xyz="0.111 0 0.0217" rpy="0 1.57 0"/>
-        <parent link="${namespace}/base_link"/>
-        <child link="laser1D_link"/>
-    </joint>
-    
- 	<gazebo reference="laser1D_link">
-	    <sensor type="ray" name="laser1D_sensor">
-	        <pose>0 0 0 0 0 0</pose>
-	        <visualize>true</visualize>
-	        <update_rate>200</update_rate>
-	        <ray>
-	            <scan>
-	                <horizontal>
-	                    <samples>1</samples>
-	                    <resolution>1</resolution>
-	                    <min_angle>0</min_angle>
-	                    <max_angle>0</max_angle>
-                    </horizontal>
-	            </scan>
-	            <range>
-	                <min>0.10</min>
-	                <max>100.0</max>
-	                <resolution>0.01</resolution>
-	            </range>
-	            <noise>
-	                <type>gaussian</type>
-                       <!--Noise parameters based on published spec for Hokuyo laser
-                       achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
-                       stddev of 0.01m will put 99.7% of samples within 0.03m of the true
-                       reading. -->
-	                <mean>0.0</mean>
-	                <stddev>0.01</stddev>
-	            </noise>
-	        </ray>
-	        <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-	            <topicName>laser/scan</topicName>
-	            <frameName>laser1D_link</frameName>
-	        </plugin>
-	    </sensor>
-  	</gazebo>
+
 
     <gazebo reference="${namespace}/base_link">      
         <material>Gazebo/White</material>
-    </gazebo>
+    </gazebo> 
 
-    <!--Mount a generic odometry sensor without odometry map (working everywhere). -->
+    <!--Mount a generic odometry sensor without odometry map (working everywhere).-->
     <xacro:odometry_plugin_macro
         namespace="${namespace}"
         odometry_sensor_suffix="1"
@@ -136,20 +57,20 @@
         enable_odometry_map="false"
         odometry_map=""
         image_scale="">
-        <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" /> <!-- [kg m^2] [kg m^2] [kg m^2] [kg m^2] [kg m^2] [kg m^2] -->
+        <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />  <!-- [kg m^2] [kg m^2] [kg m^2] [kg m^2] [kg m^2] [kg m^2] -->
         <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
     </xacro:odometry_plugin_macro>
 
-    <!-- <arg name="enable_logging" default="false" />
+    <arg name="enable_logging" default="false" />
     <arg name="enable_ground_truth" default="true" />
-    <arg name="log_file" default="$(arg mav_name)" /> -->
+    <arg name="log_file" default="$(arg mav_name)" />
 
     <!-- Instantiate a controller. -->
     <xacro:controller_plugin_macro namespace="${namespace}" imu_sub_topic="imu" />
 
     <xacro:default_imu namespace="${namespace}" parent_link="${namespace}/base_link" />
 
-    <xacro:ground_truth_imu_and_odometry namespace="${namespace}" parent_link="${namespace}/base_link" />
+    <xacro:ground_truth_imu_and_odometry namespace="${namespace}" parent_link="${namespace}/base_link" />-->
 
     <!-- Set up hydrodynamic plugin given as input parameter 
     <xacro:insert_block name="gazebo"/>-->
