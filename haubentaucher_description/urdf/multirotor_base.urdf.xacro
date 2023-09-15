@@ -45,6 +45,7 @@
         </surface>
       </collision>
     </gazebo>
+    
     <link name="${robot_namespace}/base_link_inertia">
       <inertial>
         <mass value="${mass}" />  <!-- [kg] -->
@@ -58,14 +59,16 @@
             scale="${mesh_scale} ${mesh_scale} ${mesh_scale}" />
           <!--box size="${body_width} ${body_width} ${body_height}"/--> <!-- [m] [m] [m] -->
         </geometry>
+        <origin xyz="-${body_width/2 + 0.015} -${body_width/2 + 0.015} 0" rpy="0 0 0"/> <!-- 0.015 found out by iteration -->                       
       </visual>
 
       <collision>
         <geometry>
           <!-- mesh filename="package://${mesh_file}"
             scale="${mesh_scale} ${mesh_scale} ${mesh_scale}" /--> <!-- [m] [m] [m] -->
-          <box size="${body_width} ${body_width} ${body_height}"/> <!-- [m] [m] [m] -->
+          <box size="${body_width} ${body_width} ${body_height}"/> <!-- [m] [m] [m] -->          
         </geometry>
+        <origin xyz="0 0 ${body_height/2 + 0.015}" rpy="0 0 0"/> <!-- 0.015 found out by iteration -->
       </collision>
     </link>
 

@@ -14,8 +14,8 @@
     <xacro:property name="mesh_scale" value="0.001" />
     <xacro:property name="prop_scale" value="0.0015" />
     <xacro:property name="mass" value="6.737"/>  <!-- [kg] --> <!-- changed values -->
-    <xacro:property name="body_width" value="0.47" /> <!-- [m] --> <!-- changed values -->
-    <xacro:property name="body_height" value="0.47" /> <!-- [m] --> <!-- changed values -->
+    <xacro:property name="body_width" value="0.51931" /> <!-- [m] --> <!-- updated 15.09.2023 -->
+    <xacro:property name="body_height" value="0.47305" /> <!-- [m] --> <!-- updated 15.09.2023 -->
     <xacro:property name="arm_length" value="0.354" /> <!-- [m] --> <!-- changed values -->
     <xacro:property name="rotor_x_offset" value="${arm_length*cos45}" /> <!-- [m] -->
     <xacro:property name="rotor_y_offset" value="${arm_length*sin45}" /> <!-- [m] -->
@@ -30,7 +30,7 @@
     <xacro:property name="time_constant_down" value="0.025" /> <!-- [s] -->
     <xacro:property name="max_rot_velocity" value="1838" /> <!-- [rad/s] -->
     <xacro:property name="rotor_drag_coefficient" value="8.06428e-05" />
-    <xacro:property name="rolling_moment_coefficient" value="0.000001" />
+    <xacro:property name="rolling_moment_coefficient" value="0.000001" /> 
 
     <!-- Collision bitmask - By default collides with everything -->
     <xacro:arg name="collision_bitmask" default="-1" />
@@ -39,7 +39,7 @@
     <!-- Property Blocks -->
     <xacro:property name="body_inertia">
         <!-- Iris values -->
-        <inertia ixx="0.02184" ixy="-0.001" ixz="-0.0131" iyy="0.2862" iyz="-0.0047" izz="0.1624" />  <!-- changed values -->
+        <inertia ixx="0.02953" ixy="0.0001" ixz="-0.0142" iyy="0.2303" iyz="0.0038" izz="0.1604" />  <!-- updated 15.09.2023 --> <!--inertia ixx="0.02953" ixy="0.0001" ixz="-0.0142" iyy="0.2303" iyz="0.0038" izz="0.1604" -->
     </xacro:property>
 
     <!-- inertia of a single rotor, assuming it is a cuboid. Height=3mm, width=15mm -->
@@ -47,12 +47,12 @@
         <xacro:box_inertia x="${radius_rotor}" y="0.015" z="0.003" mass="${mass_rotor*rotor_velocity_slowdown_sim}" />
     </xacro:property>
 
-    <xacro:property name="mesh_pos_x" value="-0.2175" /> <!-- [m] -->
-    <xacro:property name="mesh_pos_y" value="0.2175" /> <!-- [m] -->
-    <xacro:property name="mesh_pos_z" value="-0.05" /> <!-- [m] -->
-    <xacro:property name="mesh_ori_x" value="1.5707" /> <!-- [m] -->
-    <xacro:property name="mesh_ori_y" value="0.0" /> <!-- [m] -->
-    <xacro:property name="mesh_ori_z" value="0.0" /> <!-- [m] -->
+    <xacro:property name="robot_pos_x" value="0.0" /> <!-- [m] -->
+    <xacro:property name="robot_pos_y" value="0.0" /> <!-- [m] -->
+    <xacro:property name="robot_pos_z" value="0.0" /> <!-- [m] -->
+    <xacro:property name="robot_ori_x" value="0.0" /> <!-- [m] 1.5707 -->
+    <xacro:property name="robot_ori_y" value="0.0" /> <!-- [m] -->
+    <xacro:property name="robot_ori_z" value="0.0" /> <!-- [m] -->
     <xacro:property name="mesh_aerprop_pos_x" value="0.1905" /> <!-- [m] -->
     <xacro:property name="mesh_aerprop_pos_y" value="-0.0205" /> <!-- [m] -->
     <xacro:property name="mesh_aerprop_pos_z" value="0.01" /> <!-- [m] -->
@@ -71,7 +71,7 @@
          body_height="${body_height}"
          mesh_file="${mesh_file}"
          mesh_scale="${mesh_scale}">
-         <origin xyz="${mesh_pos_x} ${mesh_pos_y} ${mesh_pos_z}" rpy="${mesh_ori_x} ${mesh_ori_y} ${mesh_ori_z}"/>
+         <origin xyz="${robot_pos_x} ${robot_pos_y} ${robot_pos_z}" rpy="${robot_ori_x} ${robot_ori_y} ${robot_ori_z}"/>
          <xacro:insert_block name="body_inertia" />
     </xacro:multirotor_base_macro>
 
