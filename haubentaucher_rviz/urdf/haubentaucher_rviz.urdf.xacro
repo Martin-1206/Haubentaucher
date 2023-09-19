@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot name="Haubentaucher" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://haubentaucher_description/meshes/untitled.stl"/>        
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  
+</robot>
