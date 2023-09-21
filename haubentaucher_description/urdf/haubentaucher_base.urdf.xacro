@@ -8,13 +8,13 @@
 
     <!-- Body Properties -->
     <xacro:property name="rotor_velocity_slowdown_sim" value="10" />
-    <xacro:property name="mesh_file" value="$(find haubentaucher_description)/meshes/untitled.stl" /> <!-- changed (change name someday) -->
+    <xacro:property name="mesh_file" value="$(find haubentaucher_description)/meshes/haubentaucher_centered.stl" /> <!-- import mesh file -->
     <xacro:property name="rotor_1_mesh_file" value="haubentaucher_description/meshes/aerial_propeller_1.dae" />
     <xacro:property name="rotor_2_mesh_file" value="haubentaucher_description/meshes/aerial_propeller_2.dae" />
     <xacro:property name="mesh_scale" value="1" />
     <xacro:property name="prop_scale" value="0.0015" />
     <xacro:property name="mass" value="6.737"/>  <!-- [kg] --> <!-- changed values -->
-    <xacro:property name="body_width" value="0.21931" /> <!-- [m] --> <!-- updated 15.09.2023 -->
+    <xacro:property name="body_width" value="0.15" /> <!-- [m] --> <!-- updated 15.09.2023 -->
     <xacro:property name="body_height" value="0.47305" /> <!-- [m] --> <!-- updated 15.09.2023 -->
     <xacro:property name="arm_length" value="0.316" /> <!-- [m] --> <!-- changed values -->
     <xacro:property name="rotor_x_offset" value="${arm_length*cos45}" /> <!-- [m] -->

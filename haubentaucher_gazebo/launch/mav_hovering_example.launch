@@ -6,7 +6,7 @@
   <arg name="log_file" default="$(arg mav_name)"/>
   <arg name="debug" default="false"/>
   <arg name="gui" default="true"/>
-  <arg name="paused" default="true"/>
+  <arg name="paused" default="false"/>
   <!-- The following line causes gzmsg and gzerr messages to be printed to the console
       (even when Gazebo is started through roslaunch) -->
   <arg name="verbose" default="false"/>
@@ -33,7 +33,7 @@
       <rosparam command="load" file="$(find haubentaucher_gazebo)/resource/$(arg mav_name).yaml" />
       <remap from="odometry" to="odometry_sensor1/odometry" />
     </node>
-    <!--<node name="hovering_example" pkg="rotors_gazebo" type="hovering_example" output="screen"/>-->
+    <node name="hovering_example" pkg="rotors_gazebo" type="hovering_example" output="screen"/>
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
   </group>
