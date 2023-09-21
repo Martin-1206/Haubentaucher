@@ -39,7 +39,7 @@
     <!-- Property Blocks -->
     <xacro:property name="body_inertia">
         <!-- Iris values -->
-        <inertia ixx="0.02953" ixy="0.0001" ixz="-0.0142" iyy="0.2303" iyz="0.0038" izz="0.1604" />  <!-- updated 15.09.2023 --> <!--inertia ixx="0.02953" ixy="0.0001" ixz="-0.0142" iyy="0.2303" iyz="0.0038" izz="0.1604" -->
+        <inertia ixx="0.02953" ixy="0.0001" ixz="-0.0142" iyy="0.2303" iyz="0.0038" izz="0.1604" />  <!-- updated 15.09.2023 --> 
     </xacro:property>
 
     <!-- inertia of a single rotor, assuming it is a cuboid. Height=3mm, width=15mm -->
