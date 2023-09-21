@@ -20,11 +20,6 @@
         </plugin>
     </gazebo>
   
-  
-     <!--Parameters-->
-    <xacro:property name="visual_mesh_file" value="$(find haubentaucher_description)/meshes/Haubentaucher.STL"/>
-
-
 
     <gazebo reference="${namespace}/base_link">      
         <material>Gazebo/White</material>
