@@ -20,6 +20,7 @@
     <arg name="verbose" value="$(arg verbose)"/>
   </include>
 
+
   <group ns="$(arg mav_name)">
     <include file="$(find haubentaucher_gazebo)/launch/spawn_mav.launch">
       <arg name="mav_name" value="$(arg mav_name)" />
