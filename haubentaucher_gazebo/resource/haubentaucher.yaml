@@ -3,7 +3,7 @@
 mass: 6.737 #kg
 # inertia: {xx: 525.39, xy: 1.44, xz: 33.41, yy: 794.20, yz: 2.6, zz: 691.23}
 # inertia: {xx: 0.52539, xy: 0.00144, xz: 0.03341, yy: 0.79420, yz: 0.0026, zz: 0.69123}
-inertia: {xx: 0.02953, xy: 0.0001, xz: -0.0142, yy: 0.2303, yz: 0.0038, zz: 0.1604} # updated by Martin 19.09.2023
+inertia: {xx: 0.2284, xy: 0.0003, xz: -0.0091, yy: 0.1633, yz: 0.0011, zz: 0.1599} # updated by Martin 03.10.2023
 #inertia: {xx: 0.01152, xy: 0.0, xz: 0.0, yy: 0.01152, yz: 0.0, zz: 0.0218}
 
 # angle should be expressed in rad
